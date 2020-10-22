@@ -1,4 +1,10 @@
 import java.util.List;
+
+import org.junit.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 
 class Node {
@@ -78,7 +84,26 @@ public class LCA {
     }    
 
     public static void main(String[] args) {
-        LCA lca = new LCA();
+        LCA lca = newLCA();
+        // lca.root = new Node(1);
+        // lca.root.left = new Node(2);
+        // lca.root.right = new Node(3);
+        // lca.root.left.left = new Node(4);
+        // lca.root.left.right = new Node(5);
+        // lca.root.right.left = new Node(6);
+        // lca.root.right.right = new Node(7);
+
+        System.out.println("LCA(4, 5): "+ lca.findLCA(4, 5));
+        System.out.println("LCA(4, 6): "+ lca.findLCA(4, 6));
+        System.out.println("LCA(3, 2): "+ lca.findLCA(3, 4));
+        System.out.println("LCA(2, 4): "+ lca.findLCA(2, 4));
+        
+        
+        
+        
+    }
+    public static LCA newLCA(){
+        LCA lca = new  LCA();
         lca.root = new Node(1);
         lca.root.left = new Node(2);
         lca.root.right = new Node(3);
@@ -86,11 +111,23 @@ public class LCA {
         lca.root.left.right = new Node(5);
         lca.root.right.left = new Node(6);
         lca.root.right.right = new Node(7);
+        return lca;
 
-        System.out.println("LCA(4, 5): "+ lca.findLCA(4, 5));
-        System.out.println("LCA(4, 6): "+ lca.findLCA(4, 6));
-        System.out.println("LCA(3, 2): "+ lca.findLCA(3, 4));
-        System.out.println("LCA(2, 4): "+ lca.findLCA(2, 4));
-        
+    }
+    public static LCA emptyLCA(){
+        LCA lca = new LCA();
+        lca.root = null;
+        return lca;
+
+    }
+    @Test
+    public void testLCA() {
+        LCA lca = newLCA(); 
+        LCA empty = emptyLCA();
+        assertEquals(2, lca.findLCA(4, 5), "Expected answer == 2");
+        assertEquals(1, lca.findLCA(3,2),"Expected answer == 1");
+        assertEquals(-1, empty.findLCA(1, 2),"Expected answer == -1 as null");
+            
     }
 }
+
