@@ -126,7 +126,10 @@ public class LCA {
         LCA empty = emptyLCA();
         assertEquals(2, lca.findLCA(4, 5), "Expected answer == 2");
         assertEquals(1, lca.findLCA(3,2),"Expected answer == 1");
-        assertEquals(-1, empty.findLCA(1, 2),"Expected answer == -1 as null");
+        assertEquals(-1, empty.findLCA(1, 2),"Expected answer == -1 as null, EMPTY BST ");
+        assertEquals(-1, lca.findLCA(1, 8),"Expected answer == -1, only left node exists");
+        assertEquals(-1, lca.findLCA(-1, 1),"Expected answer == -1, only right node exists");
+        
             
     }
 }
