@@ -22,4 +22,15 @@ public class LCATest{
             
     }
 
+    @Test
+    public void testDAG(){
+        LCA dag = LCA.DAG();
+        assertEquals("Expected answer  == 0", 0, dag.findLCA(1,2));
+        assertEquals("Expected answer  == 3", 3, dag.findLCA(4,5));
+        assertEquals("Expected answer  == 3", 3, dag.findLCA(3,4));
+        assertEquals("Expected answer  == -1", -1, dag.findLCA(4,90));
+        assertEquals("Expected answer  == 4", 4, dag.findLCA(6,7));
+    
+    }
+
 }

@@ -81,21 +81,14 @@ public class LCA {
     }    
 
     public static void main(String[] args) {
-        LCA lca = newLCA();
-        // lca.root = new Node(1);
-        // lca.root.left = new Node(2);
-        // lca.root.right = new Node(3);
-        // lca.root.left.left = new Node(4);
-        // lca.root.left.right = new Node(5);
-        // lca.root.right.left = new Node(6);
-        // lca.root.right.right = new Node(7);
+        // LCA lca = newLCA();
+        
+        // System.out.println("LCA(4, 5): "+ lca.findLCA(4, 5));
+        // System.out.println("LCA(4, 6): "+ lca.findLCA(4, 6));
+        // System.out.println("LCA(3, 2): "+ lca.findLCA(3, 4));
+        // System.out.println("LCA(2, 4): "+ lca.findLCA(2, 4));
+        
 
-        System.out.println("LCA(4, 5): "+ lca.findLCA(4, 5));
-        System.out.println("LCA(4, 6): "+ lca.findLCA(4, 6));
-        System.out.println("LCA(3, 2): "+ lca.findLCA(3, 4));
-        System.out.println("LCA(2, 4): "+ lca.findLCA(2, 4));
-        
-        
         
         
     }
@@ -118,5 +111,31 @@ public class LCA {
 
     }
 
-}
+    public static LCA DAG(){
+        LCA dag = new LCA();
+        Node[] dagNodes = new Node[8];
+        for(int i = 0;(i<dagNodes.length - 1); i++) {
+            dagNodes[i] = new Node(i);
+        }
+        dag.root = dagNodes[0];
+        dag.root.left = dagNodes[1];
+        dag.root.right = dagNodes[2];
 
+        dag.root.left.right = dagNodes[3];
+        dag.root.left.left = null;
+        
+        dag.root.right.left = dagNodes[3];
+        dag.root.right.right = null;
+
+        dag.root.left.right.left = dagNodes[4];
+        dag.root.left.right.right = dagNodes[5];
+
+        dag.root.left.right.left.left = dagNodes[6];
+        dag.root.left.right.left.right = dagNodes[7];
+
+        dag.root.left.right.right.left = dagNodes[6];
+        dag.root.left.right.right.right = dagNodes[7];
+        return dag;
+
+    }
+}
