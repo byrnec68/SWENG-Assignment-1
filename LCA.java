@@ -111,31 +111,4 @@ public class LCA {
 
     }
 
-    public static LCA DAG(){
-        LCA dag = new LCA();
-        Node[] dagNodes = new Node[8];
-        for(int i = 0;(i<dagNodes.length - 1); i++) {
-            dagNodes[i] = new Node(i);
-        }
-        dag.root = dagNodes[0];
-        dag.root.left = dagNodes[1];
-        dag.root.right = dagNodes[2];
-
-        dag.root.left.right = dagNodes[3];
-        dag.root.left.left = null;
-        
-        dag.root.right.left = dagNodes[3];
-        dag.root.right.right = null;
-
-        dag.root.left.right.left = dagNodes[4];
-        dag.root.left.right.right = dagNodes[5];
-
-        dag.root.left.right.left.left = dagNodes[6];
-        dag.root.left.right.left.right = dagNodes[7];
-
-        dag.root.left.right.right.left = dagNodes[6];
-        dag.root.left.right.right.right = dagNodes[7];
-        return dag;
-
-    }
 }
